@@ -2,7 +2,14 @@
 
 ## Status
 
-The progress data already exists end-to-end; what is missing is only the in-app display.
+Done: Phase 1 (model: `shared/vacuum/CleanProgress.kt`), Phase 2 (bar in `StatusBar` via
+`ui/vacuum/CleanProgress.kt`), Phase 4a (Android watch notification already had `setProgress`).
+Both platforms run the same Compose UI, so iOS gets the bar with no extra code.
+
+Still open: Phase 3 (always-on monitor for live list updates) and 4b (iOS Live Activity) —
+see the scope options below; they were left out of the first implementation.
+
+The progress data already exists end-to-end; what was missing is only the in-app display.
 The robot reports `clean_percent` (0..100) in `get_status`, it is parsed into
 `VacuumStatus.cleanPercent` (shared/vacuum/VacuumStatus.kt:39), merged into the status
 `StateFlow` (shared/vacuum/VacuumRepository.kt:1361), and already feeds Android's

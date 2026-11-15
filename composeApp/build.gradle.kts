@@ -16,6 +16,12 @@ kotlin {
         }
     }
 
+    jvm {
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_11)
+        }
+    }
+
     listOf(
         iosArm64(),
         iosSimulatorArm64()
@@ -65,6 +71,10 @@ kotlin {
         }
         iosMain.dependencies {
             implementation(libs.ktor.client.darwin)
+        }
+        jvmMain.dependencies {
+            implementation(libs.ktor.client.okhttp)
+            implementation(libs.paho.mqttv3)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
